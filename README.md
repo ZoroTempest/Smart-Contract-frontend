@@ -1,72 +1,75 @@
-# Bukid Cafe POS
+# MVP Voting System (Assessment)
 
-This Solidity contract implements a **Point of Sale (POS)** system for a coffee shop. Customers can purchase credits using Ether and use these credits to buy items from a predefined menu.
+This Solidity contract implements a **MVP Voting System** that allows users to vote for candidates. The candidate who reaches 3 votes first is declared the **MVP**. This system is designed to be used for voting-based scenarios, where an owner can register candidates, and users can vote for them.
 
 ## Description
 
-The **Bukid Cafe POS** system includes the following features:
-1. **Purchase Credits**: Customers send Ether to the contract and receive credits (1 ETH = 100 credits).
-2. **View Credits**: Customers can check their current credit balance.
-3. **Menu System**: The contract maintains a list of menu items with their prices in credits.
-4. **Purchase Items**: Customers can spend their credits to purchase items from the menu.
-5. **Event Logging**: The contract logs events for credit purchases and item purchases.
+The **MVP Voting System** includes the following features:
 
-### Current Menu
-- Spanish Latte: 120 credits
-- White Chocolate Mocha: 150 credits
-- Americano: 100 credits
-- Dirty Matcha: 160 credits
-- Cafe Mocha: 130 credits
-- Caramel Macchiato: 175 credits
+1. **Register Candidates**: The contract owner can register new candidates to the voting system.
+2. **Voting**: Users can vote for a registered candidate.
+3. **MVP Declaration**: The system automatically declares the first candidate to receive 3 votes as the MVP.
+4. **Event Logging**: The contract logs events for candidate registrations, voting actions, and MVP declaration.
 
+### Key Functionalities
+
+- **registerCandidate(string memory _name)**: Allows the contract owner to register new candidates for voting.
+- **vote(uint256 _candidateId)**: Enables users to vote for a candidate by their ID. Users can vote only once.
+- **getVotes(uint256 _candidateId)**: Returns the current vote count for a specific candidate.
+- **getTotalVotes()**: Returns the total number of votes cast across all candidates.
+
+### Events
+- **CandidateRegistered(uint256 candidateId, string candidateName)**: Logs when a candidate is successfully registered.
+- **Voted(address voter, uint256 candidateId)**: Logs when a user casts a vote for a candidate.
+- **MVPDeclared(uint256 candidateId, string candidateName)**: Logs when a candidate reaches 3 votes and is declared the MVP.
+
+### Default Candidates
+Upon deployment, 3 default candidates are automatically registered:
+- **Lebron James**
+- **Kalye Irving**
+- **Justin Bulot**
 
 ## Getting Started
 
 ### Running the Contract
 
 To interact with this contract locally, follow these steps:
-Open three terminals first on your project directory
 
-
-
-1. **Start the NPM**:  
+1. **Install Dependencies**:  
    Open the project directory in your terminal and run:  
    ```bash
-   npm i (1st terminal)
+   npm install
 
-
-2. **Start the hardhat node**:  
+2. **Start the Hardhat Node**:  
    Open the project directory in your terminal and run:  
    ```bash
-   npx hardhat node (2nd terminal)
+   npx hardhat node
 
-3. **Deploy the contract**:  
+3. **Deploy the Contract**:  
    Open the project directory in your terminal and run:  
    ```bash
-   npx hardhat run --network localhost scripts/deploy.js (3rd terminal)
+   npx hardhat run --network localhost scripts/deploy.js
 
-
-4. **Launch the front-end**:  
+4. **Launch the Front-End**:  
    Open the project directory in your terminal and run:  
    ```bash
-   npm run dev (1st terminal)
-
-
-5. **Access the application**:  
-   Open on your browser and navigate to:  
-   ```bash
-   [(http://localhost:3000/)
-
-
+   npm run dev
    
+5. **Access the Application**:  
+   Open your browser and navigate to:
+   ```bash
+   http://localhost:3000/
+
 # Authors
 Justin Bulot
 
 Email - 202110965@fit.edu.ph
 
 ## License
-
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
-   
+
+This file can be directly used for GitHub, and it includes all the necessary information about the contract, its functionalities, and how to run the project locally. Simply copy this text into a `README.md` file in your project directory.
+
+
 
